@@ -17,18 +17,29 @@ void removeEspacos(char* texto){
 
     // remove espacos no meio
     for(i = 0; texto[i] != '\0'; i++){
-        if(texto[i] == ' ' && texto[i+1] == ' '){
-            memcpy(texto+i, texto+i+1, strlen(texto) - i);
-            i--;
+
+        if (texto[i] == ' ' && texto[i+1] == ' '){
+            int j = i+1;
+            while(texto[j] == ' '){
+                j++;
+            }
+            memcpy(texto+i+1, texto+j, strlen(texto) - j + 1);            
         }
     }
+}
 
+void removeQuebraLinha(char *texto){
+    int tamanho = strlen(texto);
+    if(texto[tamanho-1] == '\n'){
+        texto[tamanho-1] = '\0';
+    }
 }
 
 int main(){
     
     char texto[100];
     fgets(texto, 100, stdin);
+    removeQuebraLinha(texto);
 
     printf("[%s]\n", texto);
     removeEspacos(texto);
