@@ -1,51 +1,38 @@
-// Escreva um programa que verifique se duas strings são iguais. Não é permitido a utilização de funções prontas.
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
 
-void removeEspacos(char* texto){
-    int i = 0;
-    // remove espaco no inicio
-    for(i = 0; texto[i] == ' '; i++);
-    memcpy(texto, texto+i, strlen(texto) - i);
-    
-    // remove espaco no final
-    for(i = strlen(texto)-1; texto[i] == ' '; i--);
-    texto[i+1] = '\0';
 
-    // remove espacos no meio
-    for(i = 0; texto[i] != '\0'; i++){
-
-        if (texto[i] == ' ' && texto[i+1] == ' '){
-            int j = i+1;
-            while(texto[j] == ' '){
-                j++;
-            }
-            memcpy(texto+i+1, texto+j, strlen(texto) - j + 1);            
+bool isVogal(char c){
+    char vogais[] = "aeiouAEIOU";
+    int tam = strlen(vogais);
+    for (int i=0; i < tam; i++){
+        if(c == vogais[i]) return true;
+    }
+    return false;
+}
+int contaVogais(char* texto){
+        
+    int cont = 0;
+    int tam = strlen(texto);
+    for (int i=0; i < tam; i++){
+        if(isVogal(texto[i])){
+            cont++;
         }
     }
-}
+    return cont;
 
-void removeQuebraLinha(char *texto){
-    int tamanho = strlen(texto);
-    if(texto[tamanho-1] == '\n'){
-        texto[tamanho-1] = '\0';
-    }
 }
 
 int main(){
     
-    char texto[100];
+    char texto[102];
     fgets(texto, 100, stdin);
-    removeQuebraLinha(texto);
 
-    printf("[%s]\n", texto);
-    removeEspacos(texto);
-    printf("[%s]\n", texto);
+    int qtdeVogais = contaVogais(texto);
 
-    
+    printf("Vogais: %d\n", qtdeVogais);
 
     return 0;
 }
