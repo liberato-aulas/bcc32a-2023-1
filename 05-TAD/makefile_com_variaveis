@@ -1,0 +1,16 @@
+MAIN=main
+TAD=tad_data
+
+all:
+	# Compilando a implementacao do TAD
+	gcc -c $(TAD).c -o $(TAD).o
+
+	# Compilando o executavel
+	gcc $(MAIN).c $(TAD).o -o $(MAIN)
+	
+	# Executando
+	./main
+
+clear:
+	rm *.o
+	rm $(MAIN)
