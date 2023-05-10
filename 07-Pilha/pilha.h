@@ -5,7 +5,6 @@
 #include<stdio.h>
 #include<stdbool.h>
 
-#define FORMATO "%d"
 typedef int TipoElemento;
 /**************************************
 * DADOS
