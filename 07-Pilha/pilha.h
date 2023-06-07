@@ -1,10 +1,12 @@
 #ifndef _PILHA_H_
 #define _PILHA_H_
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 
+#define FORMATO "%d"
 typedef int TipoElemento;
 /**************************************
 * DADOS
