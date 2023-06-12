@@ -7,10 +7,11 @@
 
 int main(){
     
-    int n = 100000000;
+    int n = 50000;
     clock_t inicio, fim;
     double tempo;
 
+    srand(time(NULL));
 
     FilaPrioridade* f = filaP_criar();
     printf("Insercao\n");
